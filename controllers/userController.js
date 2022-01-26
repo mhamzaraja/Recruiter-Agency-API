@@ -1,15 +1,17 @@
 const User = require('../models/user');
 const UserRepository = require('../repository/userRepository');
+const userRepo = new UserRepository();
 
 module.exports = {
-    getUser: (req, res) => {
-        let user = new User(1, "test user", "test@test.com");
-        const userRepository = new UserRepository();
+    getUsers: (req, res) => {
+        let user = userRepo.getAllUsers();
+        console.log(user);
         res.json(user);
     },
     getUserById: (req, res) => {
         console.log("with params", req.params);
-        let user = new User(1, "test user", "test@test.com");
+        let user = userRepo.getUserById(req.params.userId);
+        console.log(user);
         res.send(user);
     },
     saveUser: (req, res) => {
