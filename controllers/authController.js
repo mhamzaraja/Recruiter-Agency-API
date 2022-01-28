@@ -1,5 +1,6 @@
 const ErrorResposnse = require('../utils/errorResposnse');
 const UserRepository = require('../repository/userRepository');
+const authConstants = require('../constants/authConstants');
 const jwt = require('jsonwebtoken');
 const userRepo = new UserRepository();
 
@@ -23,7 +24,7 @@ module.exports = {
         }
 
         //generate auth token
-        let token = jwt.sign({email: user.email}, "secrectkey@@$#%$#%%^&&123478987", {
+        let token = jwt.sign({email: user.email}, authConstants.jwtKey, {
             expiresIn: '1h'
         });
 

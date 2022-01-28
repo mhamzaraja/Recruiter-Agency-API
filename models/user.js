@@ -1,3 +1,5 @@
+// const mysql = require
+
 class User {
     constructor(id, name, email){
         this.id = id;

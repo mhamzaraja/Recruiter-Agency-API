@@ -4,6 +4,7 @@ const userRepo = new UserRepository();
 
 module.exports = {
     getUsers: (req, res) => {
+        console.log(req.user);
         let user = userRepo.getAllUsers();
         console.log(user);
         res.json(user);

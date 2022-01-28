@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
+const auth = require('../middleware/auth');
 
-router.get('/', userController.getUsers);
-router.get('/:userId', userController.getUserById);
-router.post('/:userId', userController.saveUser);
+router.get('/', auth.authenticate, auth.authorize('admin') ,userController.getUsers);
+router.get('/:userId', auth.authenticate, auth.authorize('admin') , userController.getUserById);
+router.post('/:userId', auth.authenticate, auth.authorize('admin') , userController.saveUser);
 
 module.exports = router;
