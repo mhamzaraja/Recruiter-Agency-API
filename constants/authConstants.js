@@ -1,3 +1,3 @@
 module.exports = {
-    jwtKey: ''
+    jwtKey: 'Secretkey323894789234sbcmn#$@@$@#$^&(*(&'
 };

@@ -10,10 +10,10 @@ module.exports = {
         res.json(user);
     },
     getUserById: (req, res) => {
-        console.log("with params", req.params);
+        console.log("with params", req.params.userId);
         let user = userRepo.getUserById(req.params.userId);
         console.log(user);
-        res.send(user);
+        res.json(user);
     },
     saveUser: (req, res) => {
         console.log(req.body);

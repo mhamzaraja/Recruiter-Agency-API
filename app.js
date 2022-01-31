@@ -12,7 +12,7 @@ const port = 3000;
 //body parser
 app.use(express.json());
 
-// app.use(cors);
+app.use(cors());
 
 //configure routes
 app.use('/user', userRouter);

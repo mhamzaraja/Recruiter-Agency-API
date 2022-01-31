@@ -8,9 +8,8 @@ const jwt = require('jsonwebtoken');
 module.exports = {
     authenticate : (req, res, next) => {
         let token;
-
         //check if header has a token
-        if(req.headers.authorization && req.headers.authorization.startswith('Bearer')) {
+        if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
             //extract token fom header
             token = req.headers.authorization.split(' ')[1];
         }

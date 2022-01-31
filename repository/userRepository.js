@@ -1,14 +1,14 @@
 const fs = require('fs');
 class UserRepository{
     constructor(){
-        this.users = [];
+        // this.users = [];
         this.loadData();
     }
 
     loadData(){
         try {
-            console.log("__dirname", __dirname);
-            console.log("current working directory", process.cwd());
+            // console.log("__dirname", __dirname);
+            // console.log("current working directory", process.cwd());
             let usersJson = fs.readFileSync(process.cwd() + '/data/users.json');
             this.users = JSON.parse(usersJson);
         }
