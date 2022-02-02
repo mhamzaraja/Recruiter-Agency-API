@@ -1,28 +1,26 @@
+const { sequelize } = require('./models');
 const express = require('express');
 const cors = require('cors');
-const connectDb = require('./config/db');
-const app = express();
-connectDb();
-const userRouter = require('./routers/userRouter');
-const jobsRouter = require('./routers/jobsRouter');
-const authRouter = require('./routers/authrouter');
-const errorHandler = require('./middleware/error');
+const candidateRouter = require('./routers/candidateRouter');
 const port = 3000;
+const app = express();
 
 //body parser
 app.use(express.json());
 
-app.use(cors());
+// app.use(cors());
 
 //configure routes
-app.use('/user', userRouter);
-app.use('/jobs', jobsRouter);
-app.use('/auth', authRouter);
+app.use('/candidates', candidateRouter);
 
-app.get('/', (req, res, next) => { res.send('default route'); })
+app.get('/', (req, res) => { res.send('default route'); })
 
-app.use(errorHandler);
-
-app.listen(port, () => {
-    console.log(`server listening on port ${ port }`);
-})
+app.listen(port, async () => {
+    console.log(`server listening on port ${port}`);
+    try {
+        await sequelize.authenticate();
+        console.log("Database connected!");
+    } catch (ex) {
+        console.log("app-js", ex);
+    }
+});
